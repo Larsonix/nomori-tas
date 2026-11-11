@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nomori TAS Aide-mémoire</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6a64; --line: #e2e0d8;
+    --key: #efece3; --keyline: #cfcabb; --accent: #2f6f5e; --accent2: #b4552d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161715; --card: #1f201d; --ink: #ecebe6; --muted: #9c9a92; --line: #32332f;
+      --key: #2b2c28; --keyline: #45463f; --accent: #6cc3a8; --accent2: #e58a5f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161715; --card: #1f201d; --ink: #ecebe6; --muted: #9c9a92; --line: #32332f;
+    --key: #2b2c28; --keyline: #45463f; --accent: #6cc3a8; --accent2: #e58a5f;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.45 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 40px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 16px; font-size: 13px; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  h2 { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  td:first-child { white-space: nowrap; width: 1%; padding-right: 12px; }
+  kbd, .letter { display: inline-block; min-width: 1.7em; text-align: center; padding: 1px 7px;
+    border: 1px solid var(--keyline); border-bottom-width: 2px; border-radius: 5px; background: var(--key);
+    font: 600 13px/1.5 Consolas, "Cascadia Mono", monospace; }
+  .letter { color: var(--accent2); }
+  .pad { color: var(--muted); font-size: 12px; margin-left: 4px; }
+  code, pre { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13px; }
+  pre { margin: 0; padding: 10px 12px; background: var(--key); border-radius: 8px; overflow-x: auto; line-height: 1.55; }
+  .c { color: var(--muted); }
+  .note { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+  .stickpic { display: flex; justify-content: center; margin-bottom: 10px; }
+  .cols { display: block; }
+  svg text { font: 600 12px Consolas, monospace; fill: var(--ink); }
+  svg .ring { fill: none; stroke: var(--keyline); stroke-width: 2; }
+  svg .spoke { stroke: var(--line); stroke-width: 1.5; }
+  svg .arrow { stroke: var(--accent2); stroke-width: 3; fill: none; }
+  svg .dot { fill: var(--accent2); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Nomori TAS — aide-mémoire</h1>
+  <p class="sub">Les touches marchent dans Studio (curseur sur une ligne d'entrée, pas sur une ligne <code>#</code>) et dans la fenêtre du jeu.
+    60 images ≈ 1 seconde.</p>
+
+  <div class="grid">
+    <section>
+      <h2>Touches</h2>
+      <table>
+        <tr><td><kbd>F1</kbd></td><td>Nouvelle partie depuis New Game. Pendant un TAS : l'arrête. Cette image est le départ pour les points de recherche</td></tr>
+        <tr><td><kbd>F2</kbd></td><td>Nouvelle partie, toujours</td></tr>
+        <tr><td><kbd>F3</kbd></td><td>Pause / reprise</td></tr>
+        <tr><td><kbd>F4</kbd></td><td>Une image en avant. Maintenir pour défiler</td></tr>
+        <tr><td><kbd>F5</kbd></td><td>Une image en arrière. Maintenir pour défiler</td></tr>
+        <tr><td><kbd>F6</kbd> maintenu</td><td>Accéléré</td></tr>
+        <tr><td><kbd>F7</kbd> maintenu</td><td>Ralenti</td></tr>
+        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Mémoriser cette image / l'oublier</td></tr>
+        <tr><td><kbd>F10</kbd></td><td>Avance jusqu'au prochain <code>#commentaire</code></td></tr>
+        <tr><td><kbd>F11</kbd></td><td>Recherche. <kbd>Maj</kbd>+<kbd>F11</kbd> point de passage, <kbd>Ctrl</kbd>+<kbd>F11</kbd> les efface</td></tr>
+        <tr><td><kbd>F12</kbd></td><td>Enregistrement en direct, marche / arrêt</td></tr>
+        <tr><td><kbd>²</kbd></td><td>Image par image avec vos touches (fenêtre du jeu)</td></tr>
+        <tr><td><kbd>H</kbd> / <kbd>Maj</kbd>+<kbd>H</kbd></td><td>Hitboxes / ce qu'elles montrent (fenêtre du jeu)</td></tr>
+        <tr><td><kbd>L</kbd></td><td>Laser depuis la tête du personnage (fenêtre du jeu)</td></tr>
+      </table>
+      <p class="note">À la fin du fichier, le TAS se met en pause sur sa dernière image. <kbd>F3</kbd> vous rend le jeu.</p>
+    </section>
+
+    <section>
+      <h2>Boutons dans une ligne</h2>
+      <table>
+        <tr><td><span class="letter">J</span><span class="pad">A</span></td><td>Saut</td></tr>
+        <tr><td><span class="letter">G</span><span class="pad">Y</span></td><td>Attraper</td></tr>
+        <tr><td><span class="letter">I</span><span class="pad">X</span></td><td>Interagir</td></tr>
+        <tr><td><span class="letter">B</span><span class="pad">B</span></td><td>Retour, passer un dialogue. Tenu 1 s (61 images) : reset</td></tr>
+        <tr><td><span class="letter">Q</span><span class="pad">LB</span></td><td>Portail rouge</td></tr>
+        <tr><td><span class="letter">E</span><span class="pad">RB</span></td><td>Portail vert</td></tr>
+        <tr><td><span class="letter">Z</span><span class="pad">LT</span></td><td>Remonter le temps</td></tr>
+        <tr><td><span class="letter">R</span><span class="pad">RT</span></td><td>Avancer le temps</td></tr>
+        <tr><td><span class="letter">S</span><span class="pad">Start</span></td><td>Menu pause</td></tr>
+        <tr><td><span class="letter">K</span><span class="pad">R3</span></td><td>Marqueur</td></tr>
+      </table>
+      <p class="note">Un bouton présent sur deux lignes de suite est un seul appui tenu. Pour appuyer deux fois, relâchez entre les deux.</p>
+    </section>
+
+    <section>
+      <h2>Un fichier</h2>
+<pre><span class="c"># un commentaire</span>
+  30                    <span class="c"># 30 images sans rien</span>
+  20,J                  <span class="c"># tenir Saut 20 images</span>
+   1,J                  <span class="c"># un appui d'une image</span>
+   1                    <span class="c"># relâcher</span>
+  10,J,G                <span class="c"># plusieurs boutons ensemble</span>
+  60,M,0                <span class="c"># avancer</span>
+  60,M,0,C,90           <span class="c"># avancer en tournant la caméra à droite</span>
+Aim, 90, 10             <span class="c"># ligne suivante : viser yaw 90, pitch 10</span>
+  30,M,0                <span class="c"># avancer dans cette direction</span>
+***                     <span class="c"># avance rapide jusqu'ici, puis pause</span></pre>
+      <p class="note">Lignes facultatives en haut : <code>FrameRate, 60</code> · <code>Seed, 0</code> ·
+        <code>Level, D1 Slimebun</code> (entraînement : aller directement à un niveau).</p>
+    </section>
+
+    <section>
+      <h2>Sticks</h2>
+      <div class="stickpic">
+        <svg width="150" height="150" viewBox="0 0 150 150" role="img" aria-label="Angles du stick : 0 en haut, 90 à droite, 180 en bas, 270 à gauche">
+          <circle class="ring" cx="75" cy="75" r="48"/>
+          <line class="spoke" x1="75" y1="27" x2="75" y2="123"/><line class="spoke" x1="27" y1="75" x2="123" y2="75"/>
+          <line class="arrow" x1="75" y1="75" x2="109" y2="41"/><circle class="dot" cx="109" cy="41" r="4"/>
+          <text x="75" y="18" text-anchor="middle">0</text>
+          <text x="134" y="79" text-anchor="middle">90</text>
+          <text x="75" y="142" text-anchor="middle">180</text>
+          <text x="14" y="79" text-anchor="middle">270</text>
+          <text x="118" y="34" text-anchor="middle">45</text>
+        </svg>
+      </div>
+      <div class="cols">
+        <table>
+
+          <tr><td><span class="letter">M</span></td><td>Stick gauche : se déplacer. <code>M,0</code> va là où la caméra regarde</td></tr>
+          <tr><td><span class="letter">C</span></td><td>Stick droit : caméra. <code>C,0</code> regarde en haut, <code>C,180</code> en bas</td></tr>
+          <tr><td><code>M,90</code></td><td>Angle seul : stick à fond</td></tr>
+          <tr><td><code>M,90,0.5</code></td><td>Angle, puis force de 0 à 1</td></tr>
+        </table>
+      </div>
+      <p class="note">Le stick caméra à fond tourne d'environ 0,8° par image. Pour un angle exact, utilisez <code>Aim</code>.</p>
+    </section>
+
+    <section>
+      <h2>Visée exacte</h2>
+      <table>
+        <tr><td><code>Aim, 90, -20</code></td><td>La ligne suivante commence en visant yaw 90, pitch −20</td></tr>
+        <tr><td><code>Aim, -45.5</code></td><td>Yaw seul, pitch inchangé</td></tr>
+        <tr><td>Yaw</td><td>Gauche / droite. Tourner à droite augmente</td></tr>
+        <tr><td>Pitch</td><td>Haut / bas. Positif regarde vers le bas</td></tr>
+        <tr><td>Valeurs</td><td>À lire sur la ligne Aim du panneau d'info de Studio</td></tr>
+        <tr><td>Vitesse</td><td>Jusqu'à environ 50° sur la même image. Un tour plus grand prend quelques images tout seul</td></tr>
+        <tr><td><code>…, smooth</code></td><td>La vue glisse vers l'angle (environ 15 images)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Image par image (²)</h2>
+      <table>
+        <tr><td>1</td><td>Pause sur une image, clic dans la fenêtre du jeu, touche <kbd>²</kbd></td></tr>
+        <tr><td>2</td><td>Tenez vos touches habituelles et bougez la souris. Le temps reste figé</td></tr>
+        <tr><td>3</td><td><b>Clic molette</b> : l'image est écrite dans le fichier et jouée</td></tr>
+        <tr><td>4</td><td><kbd>²</kbd> à nouveau pour sortir</td></tr>
+      </table>
+      <p class="note">Une image jouée par-dessus une image existante la remplace. Le reste du fichier ne bouge pas.</p>
+    </section>
+
+    <section>
+      <h2>Enregistrement en direct (F12)</h2>
+      <table>
+        <tr><td><kbd>F12</kbd></td><td>Le jeu s'arrête sur cette image et attend. Clic dans la fenêtre du jeu, une touche du jeu : c'est parti</td></tr>
+        <tr><td>Molette</td><td>Vitesse : 100 / 50 / 25 / 10 / 5 %</td></tr>
+        <tr><td><kbd>F5</kbd></td><td>Une demi-seconde en arrière. <kbd>Maj</kbd>+<kbd>F5</kbd> : une image en arrière</td></tr>
+        <tr><td><kbd>F3</kbd></td><td>Arrête l'horloge. Une touche du jeu la relance</td></tr>
+        <tr><td><kbd>F12</kbd></td><td>Fin de l'enregistrement</td></tr>
+      </table>
+      <p class="note">Votre fichier est copié dans <code>backups</code> à chaque départ, et chaque prise est gardée dans <code>takes</code>.</p>
+    </section>
+
+    <section>
+      <h2>Recherche (F11) — expérimentale</h2>
+      <table>
+        <tr><td>Par points</td><td><kbd>F1</kbd> à l'image de départ, marchez, <kbd>Maj</kbd>+<kbd>F11</kbd> aux points de passage, <kbd>F11</kbd> à l'arrivée</td></tr>
+        <tr><td>Par lignes</td><td>Sélectionnez des lignes dans Studio, puis <kbd>F11</kbd> avec Studio au premier plan</td></tr>
+        <tr><td>Arrêt</td><td><kbd>F11</kbd> ou <kbd>F1</kbd></td></tr>
+        <tr><td>Résultat</td><td>Rejoué proprement, puis écrit. Votre fichier est d'abord copié dans <code>backups</code></td></tr>
+        <tr><td>Options</td><td>Une ligne en haut du fichier : <code>Search, radius 1, nojump</code></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Savestates</h2>
+      <table>
+        <tr><td>Automatiques</td><td>Un par image quand un TAS joue à vitesse normale ou plus lente</td></tr>
+        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Mémoriser cette image précise / l'oublier</td></tr>
+        <tr><td>Modifications</td><td>Modifier le fichier avant l'image mémorisée l'efface. Après, elle reste</td></tr>
+        <tr><td>Perdus</td><td>Au changement de niveau ou à la fermeture du jeu</td></tr>
+        <tr><td>Vérification</td><td>Rejouez une run finie une fois depuis New Game : <kbd>F2</kbd></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Bon à savoir</h2>
+      <table>
+        <tr><td>Tester un passage</td><td>Mettez <code>***</code> juste avant, puis <kbd>F1</kbd></td></tr>
+        <tr><td>Pendant un TAS</td><td>Votre souris et votre clavier sont coupés dans le jeu</td></tr>
+        <tr><td>Dialogue de début</td><td>Il fait partie du TAS : passez-le avec <span class="letter">B</span></td></tr>
+        <tr><td>Panneau d'info</td><td>Studio montre la position, la vitesse, le sol, le yaw et le pitch</td></tr>
+        <tr><td>LiveSplit</td><td>Ouvrez-le, choisissez Compare Against &gt; Game Time. Il suit le TAS</td></tr>
+        <tr><td>Champ de vision</td><td>Un fichier fait avec un autre champ de vision peut se rejouer différemment</td></tr>
+      </table>
+    </section>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# ---- Nomori TAS -- keys: F1 start/stop | F2 restart | F3 pause | F4 +1 frame | F5 -1 frame | F8 savestate | F9 forget it
+# ----   hold F6 fast | hold F7 slow | F10 next comment | F11 search (Shift+F11 checkpoint) | F12 record | 60 frames = 1 s
+# ---- Aim, yaw, pitch = exact aim on the next line (pitch + = down) | H hitboxes | L laser (game window)
+# ---- ² in the game window = frame by frame with your own keys + mouse; wheel click = play this frame
+# ---- J jump  G grab  I interact  B back/skip (hold=reset)  Q red portal  E green portal
+# ---- Z rewind  R forward  S menu  K marker
+# ---- M,angle,strength = move   C,angle,strength = camera   (0 up, 90 right, 180 down, 270 left; C,0 = look up)
+  30

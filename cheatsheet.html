@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nomori TAS Cheat Sheet</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6a64; --line: #e2e0d8;
+    --key: #efece3; --keyline: #cfcabb; --accent: #2f6f5e; --accent2: #b4552d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161715; --card: #1f201d; --ink: #ecebe6; --muted: #9c9a92; --line: #32332f;
+      --key: #2b2c28; --keyline: #45463f; --accent: #6cc3a8; --accent2: #e58a5f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #161715; --card: #1f201d; --ink: #ecebe6; --muted: #9c9a92; --line: #32332f;
+    --key: #2b2c28; --keyline: #45463f; --accent: #6cc3a8; --accent2: #e58a5f;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.45 "Segoe UI", system-ui, sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 40px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 16px; font-size: 13px; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  h2 { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 5px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  td:first-child { white-space: nowrap; width: 1%; padding-right: 12px; }
+  kbd, .letter { display: inline-block; min-width: 1.7em; text-align: center; padding: 1px 7px;
+    border: 1px solid var(--keyline); border-bottom-width: 2px; border-radius: 5px; background: var(--key);
+    font: 600 13px/1.5 Consolas, "Cascadia Mono", monospace; }
+  .letter { color: var(--accent2); }
+  .pad { color: var(--muted); font-size: 12px; margin-left: 4px; }
+  code, pre { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13px; }
+  pre { margin: 0; padding: 10px 12px; background: var(--key); border-radius: 8px; overflow-x: auto; line-height: 1.55; }
+  .c { color: var(--muted); }
+  .note { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+  .stickpic { display: flex; justify-content: center; margin-bottom: 10px; }
+  .cols { display: block; }
+  svg text { font: 600 12px Consolas, monospace; fill: var(--ink); }
+  svg .ring { fill: none; stroke: var(--keyline); stroke-width: 2; }
+  svg .spoke { stroke: var(--line); stroke-width: 1.5; }
+  svg .arrow { stroke: var(--accent2); stroke-width: 3; fill: none; }
+  svg .dot { fill: var(--accent2); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Nomori TAS — cheat sheet</h1>
+  <p class="sub">Keys work in Studio (cursor on an input line, not a <code>#</code> line) and in the game window.
+    60 frames ≈ 1 second.</p>
+
+  <div class="grid">
+    <section>
+      <h2>Keys</h2>
+      <table>
+        <tr><td><kbd>F1</kbd></td><td>New run from New Game. While a TAS plays: stop it. That frame is the start for search points</td></tr>
+        <tr><td><kbd>F2</kbd></td><td>New run, always</td></tr>
+        <tr><td><kbd>F3</kbd></td><td>Pause / resume</td></tr>
+        <tr><td><kbd>F4</kbd></td><td>One frame forward. Hold to repeat</td></tr>
+        <tr><td><kbd>F5</kbd></td><td>One frame back. Hold to repeat</td></tr>
+        <tr><td><kbd>F6</kbd> hold</td><td>Fast-forward</td></tr>
+        <tr><td><kbd>F7</kbd> hold</td><td>Slow motion</td></tr>
+        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Remember this frame / forget it</td></tr>
+        <tr><td><kbd>F10</kbd></td><td>Fast-forward to the next <code>#comment</code></td></tr>
+        <tr><td><kbd>F11</kbd></td><td>Search. <kbd>Shift</kbd>+<kbd>F11</kbd> checkpoint, <kbd>Ctrl</kbd>+<kbd>F11</kbd> clear them</td></tr>
+        <tr><td><kbd>F12</kbd></td><td>Live recording on / off</td></tr>
+        <tr><td><kbd>²</kbd></td><td>Frame by frame with your own keys (game window)</td></tr>
+        <tr><td><kbd>H</kbd> / <kbd>Shift</kbd>+<kbd>H</kbd></td><td>Hitboxes / what they show (game window)</td></tr>
+        <tr><td><kbd>L</kbd></td><td>Laser from the character's head (game window)</td></tr>
+      </table>
+      <p class="note">At the end of the file the TAS pauses on its last frame. <kbd>F3</kbd> gives you the game back.</p>
+    </section>
+
+    <section>
+      <h2>Buttons in a line</h2>
+      <table>
+        <tr><td><span class="letter">J</span><span class="pad">A</span></td><td>Jump</td></tr>
+        <tr><td><span class="letter">G</span><span class="pad">Y</span></td><td>Grab</td></tr>
+        <tr><td><span class="letter">I</span><span class="pad">X</span></td><td>Interact</td></tr>
+        <tr><td><span class="letter">B</span><span class="pad">B</span></td><td>Back, skip dialogue. Held 1 s (61 frames): reset</td></tr>
+        <tr><td><span class="letter">Q</span><span class="pad">LB</span></td><td>Red portal</td></tr>
+        <tr><td><span class="letter">E</span><span class="pad">RB</span></td><td>Green portal</td></tr>
+        <tr><td><span class="letter">Z</span><span class="pad">LT</span></td><td>Rewind time</td></tr>
+        <tr><td><span class="letter">R</span><span class="pad">RT</span></td><td>Forward time</td></tr>
+        <tr><td><span class="letter">S</span><span class="pad">Start</span></td><td>Pause menu</td></tr>
+        <tr><td><span class="letter">K</span><span class="pad">R3</span></td><td>Marker</td></tr>
+      </table>
+      <p class="note">A button on two lines in a row is one press, held. To press twice, release it in between.</p>
+    </section>
+
+    <section>
+      <h2>A file</h2>
+<pre><span class="c"># a comment</span>
+  30                    <span class="c"># 30 frames, nothing pressed</span>
+  20,J                  <span class="c"># hold Jump 20 frames</span>
+   1,J                  <span class="c"># a one-frame tap</span>
+   1                    <span class="c"># release</span>
+  10,J,G                <span class="c"># several buttons together</span>
+  60,M,0                <span class="c"># walk forward</span>
+  60,M,0,C,90           <span class="c"># walk and turn the camera right</span>
+Aim, 90, 10             <span class="c"># next line: aim yaw 90, pitch 10</span>
+  30,M,0                <span class="c"># walk where it now aims</span>
+***                     <span class="c"># fast-forward to here, then pause</span></pre>
+      <p class="note">Optional lines at the top: <code>FrameRate, 60</code> · <code>Seed, 0</code> ·
+        <code>Level, D1 Slimebun</code> (practice: go straight to a level).</p>
+    </section>
+
+    <section>
+      <h2>Sticks</h2>
+      <div class="stickpic">
+        <svg width="150" height="150" viewBox="0 0 150 150" role="img" aria-label="Stick angles: 0 up, 90 right, 180 down, 270 left">
+          <circle class="ring" cx="75" cy="75" r="48"/>
+          <line class="spoke" x1="75" y1="27" x2="75" y2="123"/><line class="spoke" x1="27" y1="75" x2="123" y2="75"/>
+          <line class="arrow" x1="75" y1="75" x2="109" y2="41"/><circle class="dot" cx="109" cy="41" r="4"/>
+          <text x="75" y="18" text-anchor="middle">0</text>
+          <text x="134" y="79" text-anchor="middle">90</text>
+          <text x="75" y="142" text-anchor="middle">180</text>
+          <text x="14" y="79" text-anchor="middle">270</text>
+          <text x="118" y="34" text-anchor="middle">45</text>
+        </svg>
+      </div>
+      <div class="cols">
+        <table>
+
+          <tr><td><span class="letter">M</span></td><td>Left stick: move. <code>M,0</code> goes where the camera looks</td></tr>
+          <tr><td><span class="letter">C</span></td><td>Right stick: camera. <code>C,0</code> looks up, <code>C,180</code> down</td></tr>
+          <tr><td><code>M,90</code></td><td>Angle only: full strength</td></tr>
+          <tr><td><code>M,90,0.5</code></td><td>Angle, then strength from 0 to 1</td></tr>
+        </table>
+      </div>
+      <p class="note">Full camera stick turns about 0.8° per frame. For an exact angle, use <code>Aim</code>.</p>
+    </section>
+
+    <section>
+      <h2>Exact aim</h2>
+      <table>
+        <tr><td><code>Aim, 90, -20</code></td><td>The next line starts aiming at yaw 90, pitch −20</td></tr>
+        <tr><td><code>Aim, -45.5</code></td><td>Yaw only, pitch unchanged</td></tr>
+        <tr><td>Yaw</td><td>Left / right. Turning right adds</td></tr>
+        <tr><td>Pitch</td><td>Up / down. Positive looks down</td></tr>
+        <tr><td>Numbers</td><td>Read them on the Aim line of Studio's info panel</td></tr>
+        <tr><td>Speed</td><td>Up to about 50° on the same frame. A bigger turn takes a few frames by itself</td></tr>
+        <tr><td><code>…, smooth</code></td><td>The view slides onto the angle (about 15 frames)</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Frame by frame (²)</h2>
+      <table>
+        <tr><td>1</td><td>Pause on a frame, click the game window, press <kbd>²</kbd></td></tr>
+        <tr><td>2</td><td>Hold your usual game keys and move the mouse. Time stays frozen</td></tr>
+        <tr><td>3</td><td><b>Wheel click</b>: the frame is written into the file and played</td></tr>
+        <tr><td>4</td><td><kbd>²</kbd> again to leave</td></tr>
+      </table>
+      <p class="note">A frame played over an existing one replaces it. The rest of the file stays.</p>
+    </section>
+
+    <section>
+      <h2>Live recording (F12)</h2>
+      <table>
+        <tr><td><kbd>F12</kbd></td><td>The game stops on this frame and waits. Click the game window, press a game key: it starts</td></tr>
+        <tr><td>Wheel</td><td>Speed: 100 / 50 / 25 / 10 / 5 %</td></tr>
+        <tr><td><kbd>F5</kbd></td><td>Half a second back. <kbd>Shift</kbd>+<kbd>F5</kbd>: one frame back</td></tr>
+        <tr><td><kbd>F3</kbd></td><td>Stop the clock. A game key starts it again</td></tr>
+        <tr><td><kbd>F12</kbd></td><td>End the recording</td></tr>
+      </table>
+      <p class="note">Your file is copied to <code>backups</code> at every start, and every take is kept in <code>takes</code>.</p>
+    </section>
+
+    <section>
+      <h2>Search (F11) — experimental</h2>
+      <table>
+        <tr><td>By points</td><td><kbd>F1</kbd> on the starting frame, walk, <kbd>Shift</kbd>+<kbd>F11</kbd> at checkpoints, <kbd>F11</kbd> at the end</td></tr>
+        <tr><td>By lines</td><td>Select lines in Studio, then <kbd>F11</kbd> with Studio in front</td></tr>
+        <tr><td>Stop</td><td><kbd>F11</kbd> or <kbd>F1</kbd></td></tr>
+        <tr><td>Result</td><td>Replayed cleanly, then written. Your file is copied to <code>backups</code> first</td></tr>
+        <tr><td>Options</td><td>A line at the top of the file: <code>Search, radius 1, nojump</code></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Savestates</h2>
+      <table>
+        <tr><td>Automatic</td><td>One per frame while a TAS plays at real speed or slower</td></tr>
+        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Remember this exact frame / forget it</td></tr>
+        <tr><td>Edits</td><td>An edit before the saved frame drops it. Edits after it keep it</td></tr>
+        <tr><td>Lost</td><td>When the level changes or the game closes</td></tr>
+        <tr><td>Final check</td><td>Play a finished run once from New Game: <kbd>F2</kbd></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Good to know</h2>
+      <table>
+        <tr><td>Test one part</td><td>Put <code>***</code> just before it, then <kbd>F1</kbd></td></tr>
+        <tr><td>During a TAS</td><td>Your mouse and keyboard are off in the game</td></tr>
+        <tr><td>Start dialogue</td><td>It is part of the TAS: skip it with <span class="letter">B</span></td></tr>
+        <tr><td>Info panel</td><td>Studio shows position, speed, ground, yaw and pitch</td></tr>
+        <tr><td>LiveSplit</td><td>Open it, set Compare Against &gt; Game Time. It follows the TAS</td></tr>
+        <tr><td>Field of view</td><td>A file made with another field of view can replay differently</td></tr>
+      </table>
+    </section>
+  </div>
+</main>
+</body>
+</html>
