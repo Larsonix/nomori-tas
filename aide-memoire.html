@@ -70,8 +70,9 @@
         <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Mémoriser cette image / l'oublier</td></tr>
         <tr><td><kbd>F10</kbd></td><td>Avance jusqu'au prochain <code>#commentaire</code></td></tr>
         <tr><td><kbd>F11</kbd></td><td>Recherche. <kbd>Maj</kbd>+<kbd>F11</kbd> point de passage, <kbd>Ctrl</kbd>+<kbd>F11</kbd> les efface</td></tr>
-        <tr><td><kbd>F12</kbd></td><td>Enregistrement en direct, marche / arrêt</td></tr>
-        <tr><td><kbd>²</kbd></td><td>Image par image avec vos touches (fenêtre du jeu)</td></tr>
+        <tr><td><kbd>F12</kbd></td><td>Enregistrement en direct, marche / arrêt. Sort aussi de l'image par image</td></tr>
+        <tr><td><kbd>²</kbd></td><td>Image par image avec vos touches (fenêtre du jeu). <kbd>²</kbd> ou <kbd>F12</kbd> en sort</td></tr>
+        <tr><td><kbd>Maj</kbd>+<kbd>1</kbd>…<kbd>0</kbd></td><td>Garde cette image dans un emplacement (rangée du haut, fenêtre du jeu). La touche seule y revient</td></tr>
         <tr><td><kbd>H</kbd> / <kbd>Maj</kbd>+<kbd>H</kbd></td><td>Hitboxes / ce qu'elles montrent (fenêtre du jeu)</td></tr>
         <tr><td><kbd>L</kbd></td><td>Laser depuis la tête du personnage (fenêtre du jeu)</td></tr>
       </table>
@@ -109,7 +110,9 @@ Aim, 90, 10             <span class="c"># ligne suivante : viser yaw 90, pitch 1
   30,M,0                <span class="c"># avancer dans cette direction</span>
 ***                     <span class="c"># avance rapide jusqu'ici, puis pause</span></pre>
       <p class="note">Lignes facultatives en haut : <code>FrameRate, 60</code> · <code>Seed, 0</code> ·
-        <code>Level, D1 Slimebun</code> (entraînement : aller directement à un niveau).</p>
+        <code>Level, D1 Slimebun</code> (entraînement : aller directement à un niveau). Niveaux : <code>D0 Arrival</code> ·
+        <code>D1 Slimebun</code> · <code>D2 Way of Wind</code> · <code>D3 Face in the Rock</code> · <code>D4 Windmill</code> ·
+        <code>D5 Twisted Trail</code>.</p>
     </section>
 
     <section>
@@ -156,8 +159,9 @@ Aim, 90, 10             <span class="c"># ligne suivante : viser yaw 90, pitch 1
       <table>
         <tr><td>1</td><td>Pause sur une image, clic dans la fenêtre du jeu, touche <kbd>²</kbd></td></tr>
         <tr><td>2</td><td>Tenez vos touches habituelles et bougez la souris. Le temps reste figé</td></tr>
-        <tr><td>3</td><td><b>Clic molette</b> : l'image est écrite dans le fichier et jouée</td></tr>
-        <tr><td>4</td><td><kbd>²</kbd> à nouveau pour sortir</td></tr>
+        <tr><td>3</td><td><b>Clic molette</b> : l'image est écrite dans le fichier et jouée. <b>Maintenu</b> : le jeu avance à 25 %</td></tr>
+        <tr><td>4</td><td><b>Molette vers le haut</b> : enregistrement en direct à 5 %, depuis cette image</td></tr>
+        <tr><td>5</td><td><kbd>²</kbd> ou <kbd>F12</kbd> pour sortir</td></tr>
       </table>
       <p class="note">Une image jouée par-dessus une image existante la remplace. Le reste du fichier ne bouge pas.</p>
     </section>
@@ -166,10 +170,10 @@ Aim, 90, 10             <span class="c"># ligne suivante : viser yaw 90, pitch 1
       <h2>Enregistrement en direct (F12)</h2>
       <table>
         <tr><td><kbd>F12</kbd></td><td>Le jeu s'arrête sur cette image et attend. Clic dans la fenêtre du jeu, une touche du jeu : c'est parti</td></tr>
-        <tr><td>Molette</td><td>Vitesse : 100 / 50 / 25 / 10 / 5 %</td></tr>
+        <tr><td>Molette</td><td>Vitesse : 100 / 50 / 25 / 10 / 5 %. Un cran sous 5 % : image par image</td></tr>
         <tr><td><kbd>F5</kbd></td><td>Une demi-seconde en arrière. <kbd>Maj</kbd>+<kbd>F5</kbd> : une image en arrière</td></tr>
         <tr><td><kbd>F3</kbd></td><td>Arrête l'horloge. Une touche du jeu la relance</td></tr>
-        <tr><td><kbd>F12</kbd></td><td>Fin de l'enregistrement</td></tr>
+        <tr><td><kbd>F12</kbd> ou <kbd>²</kbd></td><td>Fin de l'enregistrement</td></tr>
       </table>
       <p class="note">Votre fichier est copié dans <code>backups</code> à chaque départ, et chaque prise est gardée dans <code>takes</code>.</p>
     </section>

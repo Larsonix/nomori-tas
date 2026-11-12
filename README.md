@@ -62,10 +62,11 @@ Elles marchent dans Studio et dans la fenêtre du jeu, sauf indication.
 | F8 / F9 | Mémoriser cette image / l'oublier |
 | F10 | Avance jusqu'au prochain `#commentaire` |
 | F11 | Recherche (voir plus bas). Maj+F11 : point de passage. Ctrl+F11 : efface les points |
-| F12 | Enregistrement en direct, marche / arrêt |
-| ² (touche à gauche du 1) | Image par image avec vos touches. Fenêtre du jeu seulement |
-| Clic molette | En image par image : joue cette image avec les touches tenues |
-| Molette | Pendant un enregistrement : la vitesse (100 / 50 / 25 / 10 / 5 %) |
+| F12 | Enregistrement en direct, marche / arrêt. Sort aussi de l'image par image |
+| ² (touche à gauche du 1) | Image par image avec vos touches. Fenêtre du jeu seulement. ² ou F12 en sort |
+| Clic molette | En image par image : joue cette image avec les touches tenues. Maintenu : le jeu avance à 25 % |
+| Molette | Pendant un enregistrement : la vitesse (100 / 50 / 25 / 10 / 5 %) ; un cran sous 5 % : image par image. En image par image, molette vers le haut : enregistrement à 5 % |
+| Maj + touche du haut (1 à 9, 0) | Garde cette image dans un emplacement. La touche seule y revient. Fenêtre du jeu seulement |
 | H, Maj+H | Hitboxes ; Maj+H change ce qui est montré. Fenêtre du jeu seulement |
 | L | Laser depuis la tête du personnage. Fenêtre du jeu seulement |
 
@@ -99,18 +100,31 @@ Boutons : `J` saut · `B` retour (tenu 1 s : reset) · `I` interagir · `G` attr
 1. Mettez le TAS en pause sur une image, cliquez dans la fenêtre du jeu, appuyez sur **²**.
 2. Tenez vos touches habituelles et bougez la souris : la caméra tourne, le temps reste figé.
 3. **Clic molette** : l'image est écrite dans le fichier et jouée. Choisissez la suivante.
-4. **²** à nouveau pour sortir.
+   **Clic molette maintenu** : les images défilent toutes seules à 25 % de la vitesse du jeu.
+4. **Molette vers le haut** : l'enregistrement en direct prend le relais à 5 %, depuis cette image.
+5. **²** ou **F12** pour sortir.
 
 Les images jouées par-dessus des images existantes les remplacent. Le reste du fichier ne bouge pas.
+
+## Emplacements de savestate (Maj + 1 à 0)
+
+Dix emplacements, sur la rangée du haut du clavier, fenêtre du jeu au premier plan.
+
+- **Maj + touche** : garde l'image sur laquelle le TAS se trouve.
+- **La touche seule** : y revient, en pause.
+
+Un emplacement marche toujours. Si son état ne peut plus être chargé (après une nouvelle partie, ou si vous avez
+modifié des lignes avant lui), l'outil rejoue votre fichier jusqu'à cette image, et l'emplacement redevient immédiat.
+Studio marque les lignes gardées. Les emplacements sont vides après la fermeture du jeu.
 
 ## Enregistrement en direct (F12)
 
 1. **F12** à n'importe quel moment. Le jeu s'arrête sur cette image et attend.
 2. Cliquez dans la fenêtre du jeu, puis appuyez sur une touche du jeu : l'horloge démarre.
 3. Jouez. Chaque image devient une ligne du fichier.
-4. **Molette** : la vitesse. **F5** : une demi-seconde en arrière. **Maj+F5** : une image en arrière.
-   **F3** : arrête l'horloge.
-5. **F12** : fin de l'enregistrement.
+4. **Molette** : la vitesse. Un cran sous 5 % : image par image, l'enregistrement reste ouvert.
+   **F5** : une demi-seconde en arrière. **Maj+F5** : une image en arrière. **F3** : arrête l'horloge.
+5. **F12** ou **²** : fin de l'enregistrement.
 
 Rien n'est perdu : une copie de votre fichier est gardée dans `backups` à chaque départ, et chaque prise dans `takes`.
 
@@ -137,6 +151,12 @@ comme dans une vraie run.
   `Nomori Demo.exe`.
 - **Studio ne se connecte pas** : lancez le jeu d'abord, depuis votre copie, par double-clic.
 - **Les touches F ne font rien dans Studio** : le curseur doit être sur une ligne d'entrée, pas sur un `#commentaire`.
+- **Vous tombez dans le vide au départ** : le nom après `Level,` est faux. Les six niveaux : `D0 Arrival`,
+  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`.
+- **Pour signaler un problème** : envoyez `LabData\7777\tas_events.log` et `BepInEx\LogOutput.log` (dans le dossier
+  du jeu), avec votre fichier `.tas`. Copiez-les avant de relancer le jeu.
+
+Les changements de chaque version sont dans [CHANGELOG.md](CHANGELOG.md).
 
 ## Crédits
 
@@ -212,10 +232,11 @@ They work in Studio and in the game window, unless said otherwise.
 | F8 / F9 | Remember this frame / forget it |
 | F10 | Fast-forward to the next `#comment` |
 | F11 | Search (see below). Shift+F11: a checkpoint. Ctrl+F11: clears them |
-| F12 | Live recording on / off |
-| ² (the key left of 1) | Frame by frame with your own keys. Game window only |
-| Wheel click | In frame by frame: plays this frame with the keys held |
-| Wheel | While recording: the speed (100 / 50 / 25 / 10 / 5 %) |
+| F12 | Live recording on / off. Also leaves frame by frame |
+| ² (the key left of 1) | Frame by frame with your own keys. Game window only. ² or F12 leaves it |
+| Wheel click | In frame by frame: plays this frame with the keys held. Held down: the game runs at 25 % |
+| Wheel | While recording: the speed (100 / 50 / 25 / 10 / 5 %); one notch below 5 %: frame by frame. In frame by frame, wheel up: recording at 5 % |
+| Shift + top-row key (1 to 9, 0) | Keeps this frame in a slot. The key alone goes back to it. Game window only |
 | H, Shift+H | Hitboxes; Shift+H changes what is shown. Game window only |
 | L | Laser from the character's head. Game window only |
 
@@ -249,17 +270,31 @@ Buttons: `J` jump · `B` back (held 1 s: reset) · `I` interact · `G` grab · `
 1. Pause the TAS on a frame, click the game window, press **²**.
 2. Hold your usual keys and move the mouse: the camera turns, time stays frozen.
 3. **Wheel click**: the frame is written into the file and played. Choose the next one.
-4. **²** again to leave.
+   **Wheel click held**: frames play by themselves at 25 % of the game's speed.
+4. **Wheel up**: live recording takes over at 5 %, from this frame.
+5. **²** or **F12** to leave.
 
 Frames played over existing ones replace them. The rest of the file stays as it was.
+
+## Savestate slots (Shift + 1 to 0)
+
+Ten slots, on the top row of the keyboard, with the game window in front.
+
+- **Shift + key**: keeps the frame the TAS stands on.
+- **The key alone**: goes back to it, paused.
+
+A slot always works. If its state can no longer be loaded (after a new run, or after you edited lines before it),
+the tool replays your file up to that frame, and the slot is instant again. Studio marks the kept lines.
+Slots are empty after the game is closed.
 
 ## Live recording (F12)
 
 1. **F12** at any moment. The game stops on that frame and waits.
 2. Click the game window, then press a game key: the clock starts.
 3. Play. Each frame becomes a line of the file.
-4. **Wheel**: the speed. **F5**: half a second back. **Shift+F5**: one frame back. **F3**: stops the clock.
-5. **F12**: ends the recording.
+4. **Wheel**: the speed. One notch below 5 %: frame by frame, the recording stays open.
+   **F5**: half a second back. **Shift+F5**: one frame back. **F3**: stops the clock.
+5. **F12** or **²**: ends the recording.
 
 Nothing is lost: a copy of your file is kept in `backups` at every start, and every take in `takes`.
 
@@ -285,6 +320,12 @@ as in a real run.
   `Nomori Demo.exe`.
 - **Studio does not connect**: start the game first, from your copy, by double-click.
 - **The F keys do nothing in Studio**: the cursor must be on an input line, not on a `#comment`.
+- **You fall into the void at the start**: the name after `Level,` is wrong. The six levels: `D0 Arrival`,
+  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`.
+- **To report a problem**: send `LabData\7777\tas_events.log` and `BepInEx\LogOutput.log` (in the game folder),
+  with your `.tas` file. Copy them before starting the game again.
+
+The changes of each version are in [CHANGELOG.md](CHANGELOG.md).
 
 ## Credits
 
