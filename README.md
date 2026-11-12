@@ -137,8 +137,17 @@ de votre run :
 - **Par lignes** : sélectionnez des lignes dans Studio, puis **F11** (Studio au premier plan).
 
 **F11** ou **F1** l'arrête. Le meilleur résultat est rejoué proprement avant d'être écrit, et votre fichier est
-sauvegardé dans `backups` avant toute écriture. Dans ce kit, la recherche tourne dans la fenêtre du jeu : elle est
-lente, et elle gagne surtout sur des parties courtes.
+sauvegardé dans `backups` avant toute écriture.
+
+Depuis la v1.2 la recherche tourne hors du jeu, sur tous vos cœurs (des milliers d'essais par seconde), sur les six
+niveaux. Ce qu'il faut savoir :
+
+- Elle a besoin du dossier `tools` du kit dans votre copie du jeu.
+- La première recherche télécharge un fichier depuis le serveur de Unity (environ 25 Mo, une seule fois).
+- Elle démarre après environ 20 secondes : l'outil rejoue d'abord votre fichier jusqu'au départ dans une copie cachée
+  du jeu. Une deuxième copie cachée vérifie chaque gain dans le vrai jeu avant qu'il soit écrit.
+- Elle joue la marche, les sauts et la caméra. Sur une partie avec des objets qui bougent, ou avec d'autres boutons
+  que le saut (attraper, interagir, portails, temps), elle peut ne rien gagner. Elle n'écrit jamais un résultat faux.
 
 ## LiveSplit
 
@@ -306,8 +315,17 @@ It starts from your inputs and tries small changes to arrive sooner. Two ways to
 - **By lines**: select lines in Studio, then **F11** (Studio in front).
 
 **F11** or **F1** stops it. The best result is replayed cleanly before it is written, and your file is saved
-in `backups` before any write. In this kit the search runs inside the game window: it is slow, and it gains
-mostly on short parts.
+in `backups` before any write.
+
+Since v1.2 the search runs outside the game, on all your cores (thousands of tries a second), on the six levels.
+What to know:
+
+- It needs the kit's `tools` folder in your copy of the game.
+- The first search downloads one file from Unity's server (about 25 MB, once).
+- It starts after about 20 seconds: the tool first replays your file up to the start in a hidden copy of the game.
+  A second hidden copy checks every gain in the real game before it is written.
+- It plays walking, jumping and the camera. On a part with moving objects, or with buttons other than jump (grab,
+  interact, portals, time), it may gain nothing. It never writes a wrong result.
 
 ## LiveSplit
 

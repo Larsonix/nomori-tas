@@ -21,6 +21,8 @@ sont inclus sans modification. Leur code source est sur leurs pages.
 | Mono.Cecil | Used by the mod loader | MIT | https://github.com/jbevain/cecil |
 | MemoryPack | Messages between Studio and the game | MIT | https://github.com/Cysharp/MemoryPack |
 | .NET runtime | Runs the mod loader and Studio | MIT | https://github.com/dotnet/runtime |
+| PhysX 4.1 | The physics engine inside the fast search (`tools/nomsim.exe`) | BSD-3-Clause, © NVIDIA Corporation | https://github.com/NVIDIAGameWorks/PhysX |
+| physx-sys | Rust bindings to PhysX, used by the fast search | MIT or Apache-2.0, © Embark Studios | https://github.com/EmbarkStudios/physx-rs |
 
 ## The MIT licence of Celeste Studio
 
@@ -48,5 +50,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-Nomori is a game by Enchanted Works. This kit contains no file of the game.
-Nomori est un jeu d'Enchanted Works. Ce kit ne contient aucun fichier du jeu.
+Nomori is a game by Enchanted Works. This kit contains no file of the game. Since v1.2 it contains one file made
+from the game's data: `tools/sim/all-meshes.jsonl`, the collision shapes of the six demo levels, which the fast search
+needs. It is of no use without the game.
+Nomori est un jeu d'Enchanted Works. Ce kit ne contient aucun fichier du jeu. Depuis la v1.2 il contient un fichier
+fabriqué à partir des données du jeu : `tools/sim/all-meshes.jsonl`, les formes de collision des six niveaux de la
+démo, dont la recherche rapide a besoin. Il ne sert à rien sans le jeu.

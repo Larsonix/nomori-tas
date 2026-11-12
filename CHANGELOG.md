@@ -2,6 +2,38 @@
 
 *English below each French line.*
 
+## v1.2 — 2026-11-12
+
+Pour mettre à jour : copiez à nouveau le contenu de `1 - copy into the game folder` dans votre copie du jeu et
+remplacez les fichiers. Il y a un nouveau dossier, `tools`. Nomori Studio n'a pas changé.
+/ To update: copy the content of `1 - copy into the game folder` into your copy of the game again and replace the
+files. There is a new folder, `tools`. Nomori Studio did not change.
+
+### Nouveau / New
+
+- **Recherche rapide (F11) pour tout le monde.** La recherche tourne maintenant hors du jeu, sur tous vos cœurs : des
+  milliers d'essais par seconde au lieu de quelques-uns. Chaque gain est vérifié par le vrai jeu avant d'être écrit.
+  / **Fast search (F11) for everyone.** The search now runs outside the game, on all your cores: thousands of tries a
+  second instead of a few. Every gain is checked by the real game before it is written.
+- **Elle marche sur les six niveaux.**
+  / **It works on all six levels.**
+
+### À savoir / Good to know
+
+- La première recherche télécharge un fichier depuis le serveur de Unity (environ 25 Mo, une seule fois). Il faut
+  internet cette fois-là.
+  / The first search downloads one file from Unity's server (about 25 MB, once). It needs the internet that one time.
+- Une recherche démarre après environ 20 secondes : l'outil rejoue d'abord votre fichier jusqu'au départ dans une copie
+  cachée du jeu.
+  / A search starts after about 20 seconds: the tool first replays your file up to the start in a hidden copy of the
+  game.
+- La recherche rapide joue la marche, les sauts et la caméra. Sur une partie avec des objets qui bougent, ou avec
+  d'autres boutons que le saut, elle peut ne rien gagner.
+  / The fast search plays walking, jumping and the camera. On a part with moving objects, or with buttons other than
+  jump, it may gain nothing.
+- Le retour en arrière avec F5 est toujours en cours de correction.
+  / Stepping back with F5 is still being fixed.
+
 ## v1.1 — 2026-11-12
 
 Pour mettre à jour : copiez à nouveau le contenu de `1 - copy into the game folder` dans votre copie du jeu et
