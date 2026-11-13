@@ -67,7 +67,7 @@
         <tr><td><kbd>F5</kbd></td><td>One frame back. Hold to repeat</td></tr>
         <tr><td><kbd>F6</kbd> hold</td><td>Fast-forward</td></tr>
         <tr><td><kbd>F7</kbd> hold</td><td>Slow motion</td></tr>
-        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Remember this frame / forget it</td></tr>
+        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Retired: <kbd>Shift</kbd> + a number key keeps a frame, the number key alone goes back to it</td></tr>
         <tr><td><kbd>F10</kbd></td><td>Fast-forward to the next <code>#comment</code></td></tr>
         <tr><td><kbd>F11</kbd></td><td>Search. <kbd>Shift</kbd>+<kbd>F11</kbd> checkpoint, <kbd>Ctrl</kbd>+<kbd>F11</kbd> clear them</td></tr>
         <tr><td><kbd>F12</kbd></td><td>Live recording on / off. Also leaves frame by frame</td></tr>
@@ -110,7 +110,7 @@ Aim, 90, 10             <span class="c"># next line: aim yaw 90, pitch 10</span>
   30,M,0                <span class="c"># walk where it now aims</span>
 ***                     <span class="c"># fast-forward to here, then pause</span></pre>
       <p class="note">Optional lines at the top: <code>FrameRate, 60</code> · <code>Seed, 0</code> ·
-        <code>Level, D1 Slimebun</code> (practice: go straight to a level). Levels: <code>D0 Arrival</code> ·
+        <code>Level, D1 Slimebun</code> or just <code>Level, D1</code> (practice: go straight to a level). Levels: <code>D0 Arrival</code> ·
         <code>D1 Slimebun</code> · <code>D2 Way of Wind</code> · <code>D3 Face in the Rock</code> · <code>D4 Windmill</code> ·
         <code>D5 Twisted Trail</code>.</p>
     </section>
@@ -160,8 +160,9 @@ Aim, 90, 10             <span class="c"># next line: aim yaw 90, pitch 10</span>
         <tr><td>1</td><td>Pause on a frame, click the game window, press <kbd>²</kbd></td></tr>
         <tr><td>2</td><td>Hold your usual game keys and move the mouse. Time stays frozen</td></tr>
         <tr><td>3</td><td><b>Wheel click</b>: the frame is written into the file and played. <b>Held</b>: frames play at 25 %</td></tr>
-        <tr><td>4</td><td><b>Wheel up</b>: live recording at 5 %, from this frame</td></tr>
-        <tr><td>5</td><td><kbd>²</kbd> or <kbd>F12</kbd> to leave</td></tr>
+        <tr><td>4</td><td><b>Wheel up</b>: live recording at 5 %, from this frame; it waits for your first game key</td></tr>
+        <tr><td>5</td><td><kbd>F5</kbd>: one frame back, you stay in frame by frame</td></tr>
+        <tr><td>6</td><td><kbd>²</kbd> or <kbd>F12</kbd> to leave</td></tr>
       </table>
       <p class="note">A frame played over an existing one replaces it. The rest of the file stays.</p>
     </section>
@@ -170,7 +171,7 @@ Aim, 90, 10             <span class="c"># next line: aim yaw 90, pitch 10</span>
       <h2>Live recording (F12)</h2>
       <table>
         <tr><td><kbd>F12</kbd></td><td>The game stops on this frame and waits. Click the game window, press a game key: it starts</td></tr>
-        <tr><td>Wheel</td><td>Speed: 100 / 50 / 25 / 10 / 5 %. One notch below 5 %: frame by frame</td></tr>
+        <tr><td>Wheel</td><td>At any moment: the recording speed 100 / 50 / 25 / 10 / 5 %, shown on screen. While recording, one notch below 5 %: frame by frame</td></tr>
         <tr><td><kbd>F5</kbd></td><td>Half a second back. <kbd>Shift</kbd>+<kbd>F5</kbd>: one frame back</td></tr>
         <tr><td><kbd>F3</kbd></td><td>Stop the clock. A game key starts it again</td></tr>
         <tr><td><kbd>F12</kbd> or <kbd>²</kbd></td><td>End the recording</td></tr>
@@ -193,7 +194,8 @@ Aim, 90, 10             <span class="c"># next line: aim yaw 90, pitch 10</span>
       <h2>Savestates</h2>
       <table>
         <tr><td>Automatic</td><td>One per frame while a TAS plays at real speed or slower</td></tr>
-        <tr><td><kbd>F8</kbd> / <kbd>F9</kbd></td><td>Remember this exact frame / forget it</td></tr>
+        <tr><td>Slots</td><td><kbd>Shift</kbd> + a number key keeps this exact frame; the number key alone goes back to it</td></tr>
+        <tr><td>Refused key</td><td>Says why for a few seconds: game window title, top of Studio's info panel, top left of the game</td></tr>
         <tr><td>Edits</td><td>An edit before the saved frame drops it. Edits after it keep it</td></tr>
         <tr><td>Lost</td><td>When the level changes or the game closes</td></tr>
         <tr><td>Final check</td><td>Play a finished run once from New Game: <kbd>F2</kbd></td></tr>

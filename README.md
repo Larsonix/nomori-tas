@@ -56,21 +56,24 @@ Elles marchent dans Studio et dans la fenêtre du jeu, sauf indication.
 | F2 | Nouvelle partie, toujours |
 | F3 | Pause / reprise |
 | F4 | Une image en avant. Maintenu : défile |
-| F5 | Une image en arrière. Maintenu : défile |
+| F5 | Une image en arrière (exact sur les six niveaux). Maintenu : défile vers l'arrière |
 | F6 (maintenu) | Accéléré |
 | F7 (maintenu) | Ralenti |
-| F8 / F9 | Mémoriser cette image / l'oublier |
+| F8 / F9 | Retirés : Maj + un chiffre garde une image, le chiffre seul y revient |
 | F10 | Avance jusqu'au prochain `#commentaire` |
 | F11 | Recherche (voir plus bas). Maj+F11 : point de passage. Ctrl+F11 : efface les points |
 | F12 | Enregistrement en direct, marche / arrêt. Sort aussi de l'image par image |
 | ² (touche à gauche du 1) | Image par image avec vos touches. Fenêtre du jeu seulement. ² ou F12 en sort |
 | Clic molette | En image par image : joue cette image avec les touches tenues. Maintenu : le jeu avance à 25 % |
-| Molette | Pendant un enregistrement : la vitesse (100 / 50 / 25 / 10 / 5 %) ; un cran sous 5 % : image par image. En image par image, molette vers le haut : enregistrement à 5 % |
+| Molette | À tout moment : la vitesse d'enregistrement (100 / 50 / 25 / 10 / 5 %), affichée à l'écran ; F12 enregistre à cette vitesse. Pendant un enregistrement, un cran sous 5 % : image par image. En image par image, molette vers le haut : enregistrement à 5 %, qui attend votre première touche du jeu |
 | Maj + touche du haut (1 à 9, 0) | Garde cette image dans un emplacement. La touche seule y revient. Fenêtre du jeu seulement |
 | H, Maj+H | Hitboxes ; Maj+H change ce qui est montré. Fenêtre du jeu seulement |
 | L | Laser depuis la tête du personnage. Fenêtre du jeu seulement |
 
 À la fin du fichier, le TAS se met en pause sur sa dernière image. **F3** vous rend le jeu.
+
+Une touche qui ne fait rien dit pourquoi pendant quelques secondes : dans la barre de titre de la fenêtre du jeu, en haut
+du panneau d'info de Studio, et dans l'encadré en haut à gauche du jeu.
 
 Tout tient sur une page dans le kit : ouvrez `aide-memoire.html` dans votre navigateur.
 
@@ -101,8 +104,10 @@ Boutons : `J` saut · `B` retour (tenu 1 s : reset) · `I` interagir · `G` attr
 2. Tenez vos touches habituelles et bougez la souris : la caméra tourne, le temps reste figé.
 3. **Clic molette** : l'image est écrite dans le fichier et jouée. Choisissez la suivante.
    **Clic molette maintenu** : les images défilent toutes seules à 25 % de la vitesse du jeu.
-4. **Molette vers le haut** : l'enregistrement en direct prend le relais à 5 %, depuis cette image.
-5. **²** ou **F12** pour sortir.
+4. **Molette vers le haut** : l'enregistrement en direct prend le relais à 5 %, depuis cette image ; il attend votre
+   première touche du jeu.
+5. **F5** : une image en arrière, vous restez en image par image.
+6. **²** ou **F12** pour sortir.
 
 Les images jouées par-dessus des images existantes les remplacent. Le reste du fichier ne bouge pas.
 
@@ -146,8 +151,15 @@ niveaux. Ce qu'il faut savoir :
 - La première recherche télécharge un fichier depuis le serveur de Unity (environ 25 Mo, une seule fois).
 - Elle démarre après environ 20 secondes : l'outil rejoue d'abord votre fichier jusqu'au départ dans une copie cachée
   du jeu. Une deuxième copie cachée vérifie chaque gain dans le vrai jeu avant qu'il soit écrit.
-- Elle joue la marche, les sauts et la caméra. Sur une partie avec des objets qui bougent, ou avec d'autres boutons
-  que le saut (attraper, interagir, portails, temps), elle peut ne rien gagner. Elle n'écrit jamais un résultat faux.
+- Depuis la v1.3 elle joue aussi tous les objets (slimes, saisie, portes, dialogues, portails qui tournent, ponts,
+  moulin, Kodamas, retour dans le temps, créatures) et change les boutons d'objets, les prises, les lancers et la
+  caméra pendant une saisie. Elle n'écrit jamais un résultat faux : le vrai jeu vérifie chaque gain.
+- Elle garde et gagne de la vitesse en l'air (strafe), et un nouveau moteur explore hors de votre trajet : autres
+  moments de saut, autres chemins, rebords et coins qui donnent de la vitesse (en tombant dessus ou en sautant dedans).
+  À la première recherche sur un fichier, il construit une carte du niveau et la liste de ces rebords (environ une
+  minute, pendant que la recherche tourne déjà), puis les garde.
+- **Repères `# keep`** : une ligne `# keep` après une ligne de votre fichier oblige chaque essai à reproduire ce
+  résultat (l'endroit où vous êtes posé ; `# keep speed` : votre vitesse).
 
 ## LiveSplit
 
@@ -160,8 +172,9 @@ comme dans une vraie run.
   `Nomori Demo.exe`.
 - **Studio ne se connecte pas** : lancez le jeu d'abord, depuis votre copie, par double-clic.
 - **Les touches F ne font rien dans Studio** : le curseur doit être sur une ligne d'entrée, pas sur un `#commentaire`.
-- **Vous tombez dans le vide au départ** : le nom après `Level,` est faux. Les six niveaux : `D0 Arrival`,
-  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`.
+- **La ligne `Level,` est refusée** : le nom est faux, et l'outil liste les six niveaux : `D0 Arrival`,
+  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`. Le code seul suffit
+  (`Level, D2`), ou le numéro, ou le nom, sans souci de majuscules.
 - **Pour signaler un problème** : envoyez `LabData\7777\tas_events.log` et `BepInEx\LogOutput.log` (dans le dossier
   du jeu), avec votre fichier `.tas`. Copiez-les avant de relancer le jeu.
 
@@ -235,21 +248,24 @@ They work in Studio and in the game window, unless said otherwise.
 | F2 | New run, always |
 | F3 | Pause / resume |
 | F4 | One frame forward. Held: repeats |
-| F5 | One frame back. Held: repeats |
+| F5 | One frame back (exact on all six levels). Held: repeats backwards |
 | F6 (hold) | Fast-forward |
 | F7 (hold) | Slow motion |
-| F8 / F9 | Remember this frame / forget it |
+| F8 / F9 | Retired: Shift + a number key keeps a frame, the number key alone goes back to it |
 | F10 | Fast-forward to the next `#comment` |
 | F11 | Search (see below). Shift+F11: a checkpoint. Ctrl+F11: clears them |
 | F12 | Live recording on / off. Also leaves frame by frame |
 | ² (the key left of 1) | Frame by frame with your own keys. Game window only. ² or F12 leaves it |
 | Wheel click | In frame by frame: plays this frame with the keys held. Held down: the game runs at 25 % |
-| Wheel | While recording: the speed (100 / 50 / 25 / 10 / 5 %); one notch below 5 %: frame by frame. In frame by frame, wheel up: recording at 5 % |
+| Wheel | At any moment: the recording speed (100 / 50 / 25 / 10 / 5 %), shown on screen; F12 records at it. While recording, one notch below 5 %: frame by frame. In frame by frame, wheel up: recording at 5 %, waiting for your first game key |
 | Shift + top-row key (1 to 9, 0) | Keeps this frame in a slot. The key alone goes back to it. Game window only |
 | H, Shift+H | Hitboxes; Shift+H changes what is shown. Game window only |
 | L | Laser from the character's head. Game window only |
 
 At the end of the file the TAS pauses on its last frame. **F3** gives you the game back.
+
+A key that does nothing shows why for a few seconds: in the game window's title bar, at the top of Studio's info
+panel, and in the box at the top left of the game.
 
 Everything fits on one page in the kit: open `cheatsheet.html` in your browser.
 
@@ -280,8 +296,9 @@ Buttons: `J` jump · `B` back (held 1 s: reset) · `I` interact · `G` grab · `
 2. Hold your usual keys and move the mouse: the camera turns, time stays frozen.
 3. **Wheel click**: the frame is written into the file and played. Choose the next one.
    **Wheel click held**: frames play by themselves at 25 % of the game's speed.
-4. **Wheel up**: live recording takes over at 5 %, from this frame.
-5. **²** or **F12** to leave.
+4. **Wheel up**: live recording takes over at 5 %, from this frame; it waits for your first game key.
+5. **F5**: one frame back, you stay in frame by frame.
+6. **²** or **F12** to leave.
 
 Frames played over existing ones replace them. The rest of the file stays as it was.
 
@@ -324,8 +341,14 @@ What to know:
 - The first search downloads one file from Unity's server (about 25 MB, once).
 - It starts after about 20 seconds: the tool first replays your file up to the start in a hidden copy of the game.
   A second hidden copy checks every gain in the real game before it is written.
-- It plays walking, jumping and the camera. On a part with moving objects, or with buttons other than jump (grab,
-  interact, portals, time), it may gain nothing. It never writes a wrong result.
+- Since v1.3 it also plays every object (slimes, the grab, gates, talks, turning portals, bridges, the windmill,
+  Kodamas, the time rewind, creatures) and changes object buttons, grabs, throws and the camera during a grab. It never
+  writes a wrong result: the real game checks every gain.
+- It keeps and gains speed in the air (strafing), and a new engine explores off your path: other jump moments, other
+  ways, edges and corners that give speed (falling onto them or jumping up into them). On the first search of a file it
+  builds a map of the level and the list of those edges (about a minute, while the search already runs), then keeps them.
+- **`# keep` marks**: a `# keep` line after a line of your file makes every try reproduce that result (where you
+  stand; `# keep speed`: your speed).
 
 ## LiveSplit
 
@@ -338,8 +361,9 @@ as in a real run.
   `Nomori Demo.exe`.
 - **Studio does not connect**: start the game first, from your copy, by double-click.
 - **The F keys do nothing in Studio**: the cursor must be on an input line, not on a `#comment`.
-- **You fall into the void at the start**: the name after `Level,` is wrong. The six levels: `D0 Arrival`,
-  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`.
+- **The `Level,` line is refused**: the name is wrong, and the tool lists the six levels: `D0 Arrival`,
+  `D1 Slimebun`, `D2 Way of Wind`, `D3 Face in the Rock`, `D4 Windmill`, `D5 Twisted Trail`. The code alone is
+  enough (`Level, D2`), or the number, or the name, in any case.
 - **To report a problem**: send `LabData\7777\tas_events.log` and `BepInEx\LogOutput.log` (in the game folder),
   with your `.tas` file. Copy them before starting the game again.
 
