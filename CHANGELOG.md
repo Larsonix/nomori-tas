@@ -2,6 +2,64 @@
 
 *English below each French line.*
 
+## v1.4 — 2026-11-14
+
+Pour mettre à jour : copiez à nouveau le contenu de `1 - copy into the game folder` dans votre copie du jeu et
+remplacez les fichiers. Quatre fichiers ont changé : `BepInEx/plugins/NomoriLab.dll`, `tools/nomsim.exe`,
+`tools/nomsim.pdb`, `tools/labctl.exe`. Nomori Studio n'a pas changé.
+/ To update: copy the content of `1 - copy into the game folder` into your copy of the game again and replace the
+files. Four files changed: `BepInEx/plugins/NomoriLab.dll`, `tools/nomsim.exe`, `tools/nomsim.pdb`,
+`tools/labctl.exe`. Nomori Studio did not change.
+
+### Recherche (F11) / Search (F11)
+
+- **Plus aucun gain n'est jeté.** Avant, un changement n'était gardé que si la suite de votre run, rejouée telle quelle,
+  finissait plus tôt ; et après presque n'importe quel changement, même d'un centimètre, cette suite cassait. Maintenant
+  chaque essai est jugé par son avance sur votre run : où il est et à quelle vitesse, comparé à tous les moments de votre
+  run. Puis un « suiveur » ramène la meilleure avance jusqu'à la fin, en corrigeant le stick à chaque pas pour rester sur
+  votre trajet. S'il décroche, la recherche reconstruit le passage (un saut en plus ou en moins, un pas sauté, une
+  attente). Chaque run trouvé est rejoué en entier depuis le départ avant d'être gardé.
+  / **No gain is thrown away any more.** Before, a change was kept only if the rest of your run, replayed as written,
+  finished sooner; and after almost any change, even one centimetre, that rest broke. Now every try is judged by its
+  lead over your run: where it is and how fast, compared with every moment of your run. Then a "follower" carries the
+  best lead to the end, correcting the stick every step to stay on your path. If it loses the path, the search rebuilds
+  that part (one jump more or less, a step skipped, a wait). Every run found is played whole from the start before it
+  is kept.
+- **Gains confirmés par le vrai jeu**, sur un fichier de test de chaque niveau (8 cœurs, 60 s de recherche) : Arrival
+  44 images plus tôt, Slimebun 26, Way of Wind 76, Face in the Rock 6, Windmill 140, Twisted Trail 20. Un run déjà très
+  optimisé peut ne rien gagner : sa route est alors serrée, la recherche ne le rend jamais plus lent.
+  / **Gains confirmed by the real game**, on a test file of each level (8 cores, 60 s of search): Arrival 44 frames
+  sooner, Slimebun 26, Way of Wind 76, Face in the Rock 6, Windmill 140, Twisted Trail 20. A run that is already very
+  optimised can gain nothing: its route is then tight; the search never makes it slower.
+- **Les portails.** La recherche vise maintenant les traversées de portail : elle y cherche une arrivée plus rapide,
+  puis la ramène sur votre run.
+  / **Portals.** The search now aims at portal crossings: it looks for a faster arrival there, then brings it back onto
+  your run.
+- **Une fin près de la sortie veut dire « sortir du niveau ».** Un End marqué à moins de 3 m de la sortie d'un niveau
+  (qui n'a qu'une sortie) : la recherche cherche à quitter le niveau le plus tôt possible, par n'importe quel endroit de
+  la sortie.
+  / **An End near the exit means "leave the level".** An End marked within 3 m of a level's exit (a level with a single
+  exit): the search looks for the soonest way out of the level, through any part of the exit.
+- **Démarrage plus rapide.** La partie jouée en cachette avant de chercher est plus courte (une seule partie au lieu de
+  deux) : sur un Face in the Rock entier, la recherche démarre après 36 s au lieu de 157.
+  / **Faster start.** The hidden play before the search is shorter (one play instead of two): on a whole Face in the
+  Rock, the search starts after 36 s instead of 157.
+- **Plus d'essais par seconde** : remettre la physique à un instant donné est exact et plus rapide.
+  / **More tries per second**: putting the physics back to a given moment is exact and faster.
+- **Les objets encore plus fidèles au jeu** : les slimes suivent le jeu tant qu'on ne les touche pas, Ponta, le
+  bouclier de vent à la sortie de Way of Wind, les Kodamas sauvés à travers un portail, la réapparition aux points de
+  sauvegarde du jeu.
+  / **Objects closer to the game**: slimes follow the game until touched, Ponta, the wind shield at Way of Wind's exit,
+  Kodamas rescued through a portal, the respawn at the game's own save points.
+- **Les boosts de rebord et de coin** peuvent maintenant finir dans un run complet, et les réglages par défaut de la
+  recherche ont été mesurés.
+  / **Edge and corner boosts** can now end in a whole run, and the search's default settings were measured.
+
+### Corrigé / Fixed
+
+- **La recherche pouvait s'arrêter** quand un nouveau meilleur run, plus court, remplaçait l'ancien.
+  / **The search could stop** when a new, shorter best run replaced the old one.
+
 ## v1.3 — 2026-11-13
 
 Pour mettre à jour : copiez à nouveau le contenu de `1 - copy into the game folder` dans votre copie du jeu et
